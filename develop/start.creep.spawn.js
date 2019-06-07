@@ -9,7 +9,11 @@ var creepSpawn = {
         if (spawn.energy >= cost && spawn.spawning == null ){
                 var newName = role + Game.time;
                 spawn.spawnCreep(body, newName, 
-                  {memory: {role: role, state: 0}});
+                  {memory: {role: role, 
+                            state: 0,
+                            prevState: 0
+                  }
+                  });
         }
     }
     
