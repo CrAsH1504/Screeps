@@ -25,7 +25,7 @@ module.exports = {
             }
             case STATE.TO_CONTROLER : {
                 var controler = creep.room.controller;
-                if (((creep.pos.x - controler.pos.x) ** 2 + (creep.pos.y - controler.pos.y) ** 2) > 18){  
+                if (((creep.pos.x - controler.pos.x) ** 2 + (creep.pos.y - controler.pos.y) ** 2) > 16){  
                     if (creep.fatigue == 0) { 
                         var a = creep.moveTo(controler, {reusePath: 22, visualizePathStyle: {stroke: '#ffffff'}});
                         if (a != 0) {console.log('error in upgrad STATE.CONTROLER = ' + a )}
@@ -40,7 +40,7 @@ module.exports = {
                
                 var a = creep.upgradeController(creep.room.controller);
                 if( a != 0) {console.log('error in upgrad STATE.UPGRADE = ' + a )}
-                if (creep.carry.energy == 1){
+                if (creep.carry.energy < 2){
                     creep.memory.state = STATE.TO_SOURCE;
                 }
             

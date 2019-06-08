@@ -26,7 +26,7 @@ const upgraderBody = [MOVE,MOVE,CARRY,CARRY,WORK];
 const upgraderCost = 300;
 
 const builderRole = 'builder';
-const builderMax = 1;
+const builderMax = 0;
 const builderBody = [MOVE,MOVE,MOVE,CARRY,WORK];
 const builderCost = 300;
 

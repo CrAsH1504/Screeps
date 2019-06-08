@@ -9,8 +9,6 @@ var startData = require('start.data');
 
 const spawnName = 'Spawn1';
 
-const harvesterMax = 2;
-
 
 module.exports.loop = function () {
      // console.log( " start " + Game.cpu.getUsed())

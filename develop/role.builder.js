@@ -9,7 +9,6 @@
 
 
 module.exports = {
-
     /** @param {Creep} creep **/
     run: function(creep) {
         switch(creep.memory.state){
