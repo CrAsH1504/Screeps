@@ -10,7 +10,7 @@ var roleHarvester = require('role.harvest');
 var roleUpgrader = require('role.upgrad');
 var roleBuilder = require('role.builder');
 var creepSpawn = require('start.creep.spawn');
-
+var creepRole= require('creep.role');
 
 
 const harvesterRole = 'harvest';
@@ -64,7 +64,7 @@ var creepLive = {
             }
         }
         
-      
+        creepRole.CREEP_ROLE.HARVESTER
         if (countBuilder < builderMax){
             creepSpawn.run(builderRole,builderBody,builderCost,Game.spawns['Spawn1']);
         }
@@ -72,7 +72,7 @@ var creepLive = {
             creepSpawn.run(upgraderRole,upgraderBody,upgraderCost,Game.spawns['Spawn1']);
         }
         if (countHarv < harvesterMax){
-            creepSpawn.run(harvesterRole,harvesterBody,harvesterCost,Game.spawns['Spawn1']);
+            creepSpawn.run(creepRole.CREEP_ROLE.HARVESTER,harvesterBody,harvesterCost,Game.spawns['Spawn1']);
         }
         
         
