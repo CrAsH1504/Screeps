@@ -10,7 +10,7 @@ var roleHarvester = require('role.harvest');
 var roleUpgrader = require('role.upgrad');
 var roleBuilder = require('role.builder');
 var creepSpawn = require('start.creep.spawn');
-var creepRole= require('creep.role');
+var CREEP_ROLE = require('creep.role');
 
 
 const harvesterRole = 'harvest';
@@ -26,7 +26,7 @@ const upgraderBody = [MOVE,MOVE,CARRY,CARRY,WORK];
 const upgraderCost = 300;
 
 const builderRole = 'builder';
-const builderMax = 0;
+const builderMax = 1;
 const builderBody = [MOVE,MOVE,MOVE,CARRY,WORK];
 const builderCost = 300;
 
@@ -43,19 +43,19 @@ var creepLive = {
                 var creep = Game.creeps[name];
                 
                 switch(creep.memory.role){
-                    case harvesterRole : {  
+                    case CREEP_ROLE.HARVESTER : {  
                         roleHarvester.run(creep);
                         countHarv++;
                         break;
                     }
                     
-                    case upgraderRole : {  
+                    case CREEP_ROLE.UPGRADER : {  
                         roleUpgrader.run(creep);
                         countUpgrad++;
                         break;
                     }
                     
-                    case builderRole : {  
+                    case CREEP_ROLE.BUILDER : {  
                         roleBuilder.run(creep);
                         countBuilder++;
                         break;
@@ -63,17 +63,15 @@ var creepLive = {
                 }
             }
         }
-        
-        creepRole.CREEP_ROLE.HARVESTER
-        if (countBuilder < builderMax){
-            creepSpawn.run(builderRole,builderBody,builderCost,Game.spawns['Spawn1']);
-        }
-        if (countUpgrad < upgraderMax){
-            creepSpawn.run(upgraderRole,upgraderBody,upgraderCost,Game.spawns['Spawn1']);
-        }
+       // console.log(CREEP_ROLE.NAME[0])
         if (countHarv < harvesterMax){
-            creepSpawn.run(creepRole.CREEP_ROLE.HARVESTER,harvesterBody,harvesterCost,Game.spawns['Spawn1']);
+            creepSpawn.run(CREEP_ROLE.HARVESTER,harvesterBody,harvesterCost,Game.spawns['Spawn1']);
+        }else if (countUpgrad < upgraderMax){
+            creepSpawn.run(CREEP_ROLE.UPGRADER,upgraderBody,upgraderCost,Game.spawns['Spawn1']);
+        }else if (countBuilder < builderMax){
+            creepSpawn.run(CREEP_ROLE.BUILDER,builderBody,builderCost,Game.spawns['Spawn1']);
         }
+        
         
         
     }

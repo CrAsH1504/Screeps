@@ -1,4 +1,6 @@
-   const STATE = {
+var CREEP_ROLE = require('creep.role');
+ 
+const STATE = {
         TO_SOURCE    : 0,
         HARVEST      : 1,  // ???
         TO_TARGET    : 2,
@@ -47,7 +49,7 @@ module.exports = {
             }
             case STATE.TO_WAIT : {
                 var flag = Game.flags['Flag1'];
-                if (((creep.pos.x - flag.pos.x) ** 2 + (creep.pos.y - flag.pos.y) ** 2) > 1.1) {
+                if (((creep.pos.x - flag.pos.x) ** 2 + (creep.pos.y - flag.pos.y) ** 2) > 2) {
                             if (creep.fatigue == 0) { 
                                 var a = creep.moveTo(flag, {reusePath: 15, visualizePathStyle: {stroke: '#ffffff'}});
                                 if (a != 0) {console.log('error in harvest STATE.TO_WAIT = ' + a )}
@@ -60,6 +62,9 @@ module.exports = {
             case STATE.WAIT : {
                 if (creep.room.energyAvailable < creep.room.energyCapacityAvailable) {
                     creep.memory.state = creep.memory.prevState;
+                } else {
+                    creep.memory.role = CREEP_ROLE.BUILDER;
+                    creep.memory.state = STATE.TO_SOURCE;
                 }
                 break;
             }

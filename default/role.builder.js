@@ -44,7 +44,7 @@ module.exports = {
             }
             case STATE.WAIT : {
                 const a = creep.upgradeController(creep.room.controller);
-                if( a != 0) {console.log('error in upgrad STATE.UPGRADE = ' + a )}
+                if( a != 0) {console.log(creep.name + ': error in builder STATE.UPGRADE = ' + a )}
                 if (creep.carry.energy == 0){
                     creep.memory.state = STATE.TO_SOURCE;
                 }

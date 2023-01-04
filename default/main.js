@@ -5,7 +5,7 @@ var roleBuilder = require('role.builder');
 
 var start = require('start.creep');
 var startData = require('start.data');
-
+var utils = require('utils');
 
 const spawnName = 'Spawn1';
 
@@ -31,8 +31,9 @@ module.exports.loop = function () {
         Game.spawns['Spawn1'].spawnCreep([MOVE,CARRY,WORK], newName, 
             {memory: {role: 'harvest'}});        
     }*/
-
+    utils.refreshAllRole();
     start.run();
+    
 /*
     for(var name in Game.creeps) {
         var creep = Game.creeps[name];

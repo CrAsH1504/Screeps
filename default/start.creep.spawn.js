@@ -1,15 +1,18 @@
+var CREEP_ROLE = require('creep.role');
+
 var creepSpawn = {
      
      
-    /** @param {String} role 
+    /** @param {CREEP_ROLE} role 
         @param {Array} body 
         @param {number} cost 
         @param {StructureSpawn} spawn**/
     run : function(role,body,cost,spawn){
         if (spawn.energy >= cost && spawn.spawning == null ){
-                var newName = role + Game.time;
+                var newName = CREEP_ROLE.NAME[role] + '_' + Game.time;
                 spawn.spawnCreep(body, newName, 
-                  {memory: {role: role, 
+                  {memory: {role: role,
+                            mainRole: role,
                             state: 0,
                             prevState: 0
                   }

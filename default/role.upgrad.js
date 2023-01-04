@@ -39,7 +39,7 @@ module.exports = {
             case STATE.UPGRADE : {
                
                 var a = creep.upgradeController(creep.room.controller);
-                if( a != 0) {console.log('error in upgrad STATE.UPGRADE = ' + a )}
+                if( a != 0) {console.log(creep.name + ': error in upgrad STATE.UPGRADE = ' + a )}
                 if (creep.carry.energy < 2){
                     creep.memory.state = STATE.TO_SOURCE;
                 }
