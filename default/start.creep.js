@@ -21,13 +21,13 @@ const harvesterCost = 200;
 
 
 const upgraderRole = 'upgrad';
-const upgraderMax = 2;
+const upgraderMax = 1;
 const upgraderBody = [MOVE,MOVE,CARRY,CARRY,WORK];
 const upgraderCost = 300;
 
 const builderRole = 'builder';
-const builderMax = 1;
-const builderBody = [MOVE,MOVE,MOVE,CARRY,WORK];
+const builderMax = 3;
+const builderBody = [MOVE,CARRY,WORK,WORK];
 const builderCost = 300;
 
 
@@ -45,18 +45,31 @@ var creepLive = {
                 switch(creep.memory.role){
                     case CREEP_ROLE.HARVESTER : {  
                         roleHarvester.run(creep);
-                        countHarv++;
                         break;
                     }
                     
                     case CREEP_ROLE.UPGRADER : {  
                         roleUpgrader.run(creep);
-                        countUpgrad++;
                         break;
                     }
                     
                     case CREEP_ROLE.BUILDER : {  
                         roleBuilder.run(creep);
+                        break;
+                    }
+                }
+                switch(creep.memory.mainRole){
+                    case CREEP_ROLE.HARVESTER : {
+                        countHarv++;
+                        break;
+                    }
+                    
+                    case CREEP_ROLE.UPGRADER : {
+                        countUpgrad++;
+                        break;
+                    }
+                    
+                    case CREEP_ROLE.BUILDER : {  
                         countBuilder++;
                         break;
                     }
@@ -78,3 +91,4 @@ var creepLive = {
 }
 
 module.exports =  creepLive;
+

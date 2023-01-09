@@ -42,8 +42,7 @@ module.exports = {
                            creep.memory.state = STATE.TO_SOURCE;
                        }
                   } else {
-                      creep.memory.state = STATE.TO_WAIT;
-                      creep.memory.prevState = STATE.TO_TARGET;
+                      creep.memory.state = STATE.WAIT;
                   }
                 break;
             }
@@ -61,7 +60,7 @@ module.exports = {
             }
             case STATE.WAIT : {
                 if (creep.room.energyAvailable < creep.room.energyCapacityAvailable) {
-                    creep.memory.state = creep.memory.prevState;
+                    creep.memory.state = STATE.TO_SOURCE;
                 } else {
                     creep.memory.role = CREEP_ROLE.BUILDER;
                     creep.memory.state = STATE.TO_SOURCE;
